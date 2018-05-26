@@ -4,15 +4,32 @@
   See http://ionicframework.com/docs/components/#navigation for more info on
   Ionic pages and navigation.
 -->
-<ion-header>
+<!--<ion-header>-->
 
-  <ion-navbar>
-    <ion-title>login</ion-title>
-  </ion-navbar>
+  <!--<ion-navbar>-->
+    <!--<ion-title>login</ion-title>-->
+  <!--</ion-navbar>-->
 
-</ion-header>
+<!--</ion-header>-->
 
 
-<ion-content padding>
+<ion-content fullscreen padding>
+  <div class="form-holder">
+    <h1>login to the todo list</h1>
+    <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+      <ion-list>
+        <ion-item>
+          <ion-label floating>email</ion-label>
+          <ion-input type="email" formControlName="email"></ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-label floating>pwd</ion-label>
+          <ion-input type="text" formControlName="pwd"></ion-input>
+        </ion-item>
+      </ion-list>
 
+      <button [disabled]="!loginForm.valid" ion-button full type="submit" class="submit-btn">Login</button>
+    </form>
+
+  </div>
 </ion-content>

@@ -7,12 +7,35 @@
 <ion-header>
 
   <ion-navbar>
-    <ion-title>createAccount</ion-title>
+    <ion-title>create Account</ion-title>
   </ion-navbar>
 
 </ion-header>
 
 
 <ion-content padding>
-
+<div class="form-holder">
+  <h1>register user</h1>
+  <form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
+    <ion-list>
+      <ion-item>
+        <ion-label floating>1st name</ion-label>
+        <ion-input type="text" formControlName="fname"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label floating>lst name</ion-label>
+        <ion-input type="text" formControlName="lname"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label floating>email</ion-label>
+        <ion-input type="email" formControlName="email"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label floating>pwd</ion-label>
+        <ion-input type="text" formControlName="pwd"></ion-input>
+      </ion-item>
+    </ion-list>
+    <button ion-button full type="submit" [disabled]="!registerForm.valid">Register</button>
+  </form>
+</div>
 </ion-content>

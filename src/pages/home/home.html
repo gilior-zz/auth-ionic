@@ -1,14 +1,22 @@
 <ion-header>
   <ion-navbar>
     <ion-title>
-      Ionic Blank
+      auth using fire base
     </ion-title>
   </ion-navbar>
 </ion-header>
 
-<ion-content padding>
-  The world is your oyster.
-  <p>
-    If you get lost, the <a href="http://ionicframework.com/docs/v2">docs</a> will be your guide.
-  </p>
+<ion-content padding fullscreen class="button-page">
+<div class="holder">
+  <h1>select how u wana auth</h1>
+  <div class="login-button-holder">
+    <button (click)="onLogin()"  ion-button color="light">email && pwd</button>
+    <button ion-button color="google">google</button>
+    <button ion-button color="twitter">twitter</button>
+    <button ion-button color="facebook">facebook</button>
+    <button ion-button color="github">github</button>
+    <div class="create">dont have account?</div>
+    <p class="btn create" (click)="onCreate()">create one.</p>
+  </div>
+</div>
 </ion-content>
