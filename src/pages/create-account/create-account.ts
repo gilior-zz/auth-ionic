@@ -26,8 +26,8 @@ export class CreateAccountPage {
     this.registerForm = this.formBuilder.group({
       fname: ['a', [Validators.required]],
       lname: ['b', [Validators.required]],
-      pwd: [parseInt(Math.random() * 10000000).toString() , [Validators.required]],
-      email: ['c@c.com', [Validators.required, Validators.email]],
+      pwd: [parseInt((Math.random() * 10000000).toString()).toString(), [Validators.required]],
+      email: ['lior@' + parseInt((Math.random() * 10000000).toString()).toString()+'.com', [Validators.required, Validators.email]],
     })
   }
 
@@ -39,27 +39,27 @@ export class CreateAccountPage {
     let loading = this.loadingController.create({content: 'onSubmit'});
     loading.present();
     console.log('registerForm', this.registerForm.value);
-    this.authProvider.signUpUser(
+    this.authProvider.foo(
       this.registerForm.value.email,
       this.registerForm.value.pwd,
       this.registerForm.value.fname,
       this.registerForm.value.lname,
     )
-      .then(authData => {
-        loading.dismissAll();
-        this.navCtrl.setRoot('TodoListPage')
-      })
-      .catch(
-        error2 => {
-          let alert = this.alertController.create(
-            {
-              message: error2,
-              buttons: [
-                {text: 'ok', role: 'cancel'}
-              ]
-            });
-          alert.present();
-        })
+      .subscribe(authData => {
+          loading.dismissAll();
+          this.navCtrl.setRoot('TodoListPage'),
+            error2 => {
+              let alert = this.alertController.create(
+                {
+                  message: error2,
+                  buttons: [
+                    {text: 'ok', role: 'cancel'}
+                  ]
+                });
+              alert.present();
+            }
+        }
+      )
 
 
   }

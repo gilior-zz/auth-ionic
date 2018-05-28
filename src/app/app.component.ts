@@ -20,7 +20,7 @@ export class MyApp {
         unSub();
       }
       else{
-        this.rootPage="CreateAccountPage"
+        this.rootPage="HomePage"
         unSub();
       }
 
