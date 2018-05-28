@@ -26,4 +26,7 @@ listItems=[];
     this.listItems=this.dataProvider.list;
   }
 
+  onLogout() {
+
+  }
 }
