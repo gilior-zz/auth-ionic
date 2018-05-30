@@ -26,7 +26,7 @@ export class CreateAccountPage {
     this.registerForm = this.formBuilder.group({
       fname: ['a', [Validators.required]],
       lname: ['b', [Validators.required]],
-      pwd: [parseInt((Math.random() * 10000000).toString()).toString(), [Validators.required]],
+      pwd: ['1q2w3e4r', [Validators.required]],
       email: ['lior@' + parseInt((Math.random() * 10000000).toString()).toString()+'.com', [Validators.required, Validators.email]],
     })
   }

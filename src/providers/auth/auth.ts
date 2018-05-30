@@ -18,8 +18,21 @@ export class AuthProvider {
     console.log('Hello AuthProvider Provider');
   }
 
-  signout() {
-    firebase.auth().signOut()
+  loginUser(email, pwd): Promise<any> {
+    return firebase.auth().signInWithEmailAndPassword(email, pwd);
+  }
+
+  signout(): Promise<any> {
+    return new Promise((resolve, reject) => {
+      firebase.auth().signOut()
+        .then(() => {
+          let loggedOut = true;
+          resolve(loggedOut)
+        })
+        .catch((error: any) => {
+          reject(error);
+        })
+    })
   }
 
   async signUpUser(email, pwd, fn, ln): Promise<any> {
