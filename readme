@@ -1,3 +1,6 @@
 keytool -genkey -v -keystore "C:\Users\user\.android\debug.keystore" -storepass android -alias lg -keypass android "CN=android Debug,0=Android,C=US"
 keytool -exportcert -list -v -alias lg -keystore "C:\Users\user\.android\debug.keystore"
 SHA1: D5:D1:06:AB:14:D9:75:47:38:6B:C0:EB:46:27:81:E9:A6:BD:F9:A6
+https://fabric.io/kits/android/crashlytics/install
+https://apps.twitter.com/app/15302430/keys
+AndroidDebugKey

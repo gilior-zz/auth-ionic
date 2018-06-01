@@ -10,6 +10,7 @@ import { DataProvider } from '../providers/data/data';
 import { AuthProvider } from '../providers/auth/auth';
 import {HttpClientModule} from "@angular/common/http";
 import {GooglePlus} from "@ionic-native/google-plus";
+import {TwitterConnect} from "@ionic-native/twitter-connect";
 
 
 @NgModule({
@@ -32,7 +33,8 @@ import {GooglePlus} from "@ionic-native/google-plus";
     {provide: ErrorHandler, useClass: IonicErrorHandler},
     DataProvider,
     AuthProvider,
-    GooglePlus
+    GooglePlus,
+    TwitterConnect
   ]
 })
 export class AppModule {}

@@ -39,4 +39,19 @@ export class HomePage {
         alertController.present();
       })
   }
+
+  onTwitterLogin() {
+    const loadingController = this.loadingController.create();
+    loadingController.present();
+    this.authProvider.loginWithTwitter()
+      .then(() => {
+        loadingController.dismissAll();
+        this.navCtrl.setRoot('TodoListPage')
+      })
+      .catch((err) => {
+        loadingController.dismissAll();
+        const alertController = this.alertController.create({message: err});
+        alertController.present();
+      })
+  }
 }

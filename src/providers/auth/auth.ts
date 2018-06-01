@@ -5,8 +5,8 @@ import {UserCredential} from "@firebase/auth-types";
 import * as firebase from "firebase";
 import {User} from "firebase";
 import {fromPromise} from "rxjs/observable/fromPromise";
-import {GooglePlus} from "@ionic-native/google-plus";
 import {Platform} from "ionic-angular";
+import {TwitterConnect} from "@ionic-native/twitter-connect";
 
 /*
   Generated class for the AuthProvider provider.
@@ -17,7 +17,9 @@ import {Platform} from "ionic-angular";
 @Injectable()
 export class AuthProvider {
 
-  constructor(public http: HttpClient, private g: GooglePlus, private platform: Platform) {
+  constructor(public http: HttpClient,
+              private twitterConnect: TwitterConnect,
+              private platform: Platform) {
     console.log('Hello AuthProvider Provider');
   }
 
@@ -91,4 +93,26 @@ export class AuthProvider {
     return fromPromise(this.createNewUser(email, pwd, fn, ln))
   }
 
+  loginWithTwitter(): Promise<any> {
+    if (this.platform.is('cordova')) {
+      return this.twitterConnect.login()
+        .then((res) => {
+          console.log('res', res)
+        })
+        .catch((err) => {
+          console.log('err', err)
+        })
+    }
+    else {
+      const twitterAuthProvider = new firebase.auth.TwitterAuthProvider();
+      return firebase.auth().signInWithPopup(twitterAuthProvider)
+        .then((res) => {
+          console.log('res', res)
+        })
+        .catch((err) => {
+          console.log('err', err)
+        })
+    }
+
+  }
 }

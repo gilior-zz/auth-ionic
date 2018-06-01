@@ -194,6 +194,10 @@
   version "4.7.0"
   resolved "https://registry.yarnpkg.com/@ionic-native/status-bar/-/status-bar-4.7.0.tgz#f292bf67c2d5fef43b1fc7b442f5bc75139cc8e3"
 
+"@ionic-native/twitter-connect@^4.7.0":
+  version "4.7.0"
+  resolved "https://registry.yarnpkg.com/@ionic-native/twitter-connect/-/twitter-connect-4.7.0.tgz#ce4a2b0477d3e115a7d0af0a71a3481cf4389d35"
+
 "@ionic/app-scripts@3.1.9":
   version "3.1.9"
   resolved "https://registry.yarnpkg.com/@ionic/app-scripts/-/app-scripts-3.1.9.tgz#6f45bb9f10e2674ed5e6270e758ccfb368af9478"
