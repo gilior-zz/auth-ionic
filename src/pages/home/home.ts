@@ -54,4 +54,12 @@ export class HomePage {
         alertController.present();
       })
   }
+
+  onGithubLogin() {
+    this.authProvider.loginWithGithub()
+      .then((res)=>{
+      this.navCtrl.setRoot('TodoListPage')
+      })
+      .catch((err)=>{})
+  }
 }

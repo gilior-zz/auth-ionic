@@ -23,6 +23,20 @@ export class AuthProvider {
     console.log('Hello AuthProvider Provider');
   }
 
+  loginWithGithub(): Promise<any> {
+    const githubAuthProvider = new firebase.auth.GithubAuthProvider();
+    return firebase.auth().signInWithPopup(githubAuthProvider)
+      .then((res) => {
+        firebase.database()
+          .ref(`/userProfile/${res.user.uid}`)
+          .set({email: res.user.email, fname: res.user.displayName, lname: res.user.displayName})
+        return res.user;
+      })
+      .catch((err) => {
+        console.log('err Github',err)
+      })
+  }
+
   async loginWithGoogle(): Promise<any> {
     if (this.platform.is('cordove')) {
     }
