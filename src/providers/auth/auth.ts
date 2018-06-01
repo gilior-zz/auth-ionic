@@ -3,7 +3,10 @@ import {Injectable} from '@angular/core';
 import {Observable} from "rxjs/Observable";
 import {UserCredential} from "@firebase/auth-types";
 import * as firebase from "firebase";
+import {User} from "firebase";
 import {fromPromise} from "rxjs/observable/fromPromise";
+import {GooglePlus} from "@ionic-native/google-plus";
+import {Platform} from "ionic-angular";
 
 /*
   Generated class for the AuthProvider provider.
@@ -14,8 +17,37 @@ import {fromPromise} from "rxjs/observable/fromPromise";
 @Injectable()
 export class AuthProvider {
 
-  constructor(public http: HttpClient) {
+  constructor(public http: HttpClient, private g: GooglePlus, private platform: Platform) {
     console.log('Hello AuthProvider Provider');
+  }
+
+  async loginWithGoogle(): Promise<any> {
+    if (this.platform.is('cordove')) {
+    }
+    else {
+      const googleAuthProvider = new firebase.auth.GoogleAuthProvider();
+      return firebase.auth().signInWithPopup(googleAuthProvider)
+        .then((res) => {
+          const tkn = res.credential.accessToken;
+          console.log('token', tkn);
+          const usr: User = res.user;
+          console.log('user', usr);
+          firebase.database()
+            .ref(`/userProfile/${usr.uid}`)
+            .set({email: usr.email, fname: usr.displayName, lname: usr.displayName})
+          return usr;
+        })
+        .catch(err => {
+          var errCode = err.code;
+          console.log('errCode', errCode)
+          var message = err.message;
+          console.log('message', message)
+          var email = err.email;
+          console.log('email', email)
+          var credential = err.credential;
+          console.log('credential', credential)
+        })
+    }
   }
 
   loginUser(email, pwd): Promise<any> {
@@ -35,7 +67,7 @@ export class AuthProvider {
     })
   }
 
-  async signUpUser(email, pwd, fn, ln): Promise<any> {
+  async createNewUser(email, pwd, fn, ln): Promise<any> {
     try {
       const newUser: UserCredential = await firebase
         .auth()
@@ -56,7 +88,7 @@ export class AuthProvider {
   }
 
   foo(email, pwd, fn, ln): Observable<any> {
-    return fromPromise(this.signUpUser(email, pwd, fn, ln))
+    return fromPromise(this.createNewUser(email, pwd, fn, ln))
   }
 
 }

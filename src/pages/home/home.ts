@@ -1,5 +1,6 @@
 import {Component} from '@angular/core';
-import {IonicPage, NavController} from 'ionic-angular';
+import {AlertController, IonicPage, LoadingController, NavController} from 'ionic-angular';
+import {AuthProvider} from "../../providers/auth/auth";
 
 @IonicPage()
 @Component({
@@ -8,7 +9,10 @@ import {IonicPage, NavController} from 'ionic-angular';
 })
 export class HomePage {
 
-  constructor(public navCtrl: NavController) {
+  constructor(public navCtrl: NavController,
+              private authProvider: AuthProvider,
+              private  loadingController: LoadingController,
+              private  alertController: AlertController) {
 
   }
 
@@ -19,5 +23,20 @@ export class HomePage {
   onLogin() {
     this.navCtrl.push('LoginPage')
 
+  }
+
+  googleLogin() {
+    const loadingController = this.loadingController.create();
+    loadingController.present();
+    this.authProvider.loginWithGoogle()
+      .then(() => {
+        loadingController.dismissAll();
+        this.navCtrl.setRoot('TodoListPage')
+      })
+      .catch((err) => {
+        loadingController.dismissAll();
+        const alertController = this.alertController.create({message: err});
+        alertController.present();
+      })
   }
 }

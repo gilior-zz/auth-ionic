@@ -9,6 +9,8 @@ import { MyApp } from './app.component';
 import { DataProvider } from '../providers/data/data';
 import { AuthProvider } from '../providers/auth/auth';
 import {HttpClientModule} from "@angular/common/http";
+import {GooglePlus} from "@ionic-native/google-plus";
+
 
 @NgModule({
   declarations: [
@@ -29,7 +31,8 @@ import {HttpClientModule} from "@angular/common/http";
     SplashScreen,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
     DataProvider,
-    AuthProvider
+    AuthProvider,
+    GooglePlus
   ]
 })
 export class AppModule {}

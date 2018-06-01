@@ -182,6 +182,10 @@
   version "4.7.0"
   resolved "https://registry.yarnpkg.com/@ionic-native/core/-/core-4.7.0.tgz#9e7c13db9f18f454d7a31a5d61d369a7db3f338c"
 
+"@ionic-native/google-plus@^4.7.0":
+  version "4.7.0"
+  resolved "https://registry.yarnpkg.com/@ionic-native/google-plus/-/google-plus-4.7.0.tgz#413f36ff35467a27c23d7ea663f814176a811cd0"
+
 "@ionic-native/splash-screen@4.7.0":
   version "4.7.0"
   resolved "https://registry.yarnpkg.com/@ionic-native/splash-screen/-/splash-screen-4.7.0.tgz#e22c41e986cfc5e8ff12db7fc464c2daf9206037"
@@ -920,6 +924,10 @@ cookie@0.3.1:
 copy-descriptor@^0.1.0:
   version "0.1.1"
   resolved "https://registry.yarnpkg.com/copy-descriptor/-/copy-descriptor-0.1.1.tgz#676f6eb3c39997c2ee1ac3a924fd6124748f578d"
+
+cordova-plugin-googleplus@^5.3.0:
+  version "5.3.0"
+  resolved "https://registry.yarnpkg.com/cordova-plugin-googleplus/-/cordova-plugin-googleplus-5.3.0.tgz#7ef418205f693018a2d06d2cb865de9d7cb721ca"
 
 core-js@2.5.5:
   version "2.5.5"
